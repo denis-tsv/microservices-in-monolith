@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using First;
+using Joined.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,6 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Second;
+using Second.Services;
 
 namespace Joined
 {
@@ -28,6 +32,11 @@ namespace Joined
 		{
 			services.AddControllers();
 			services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "Joined", Version = "v1" }); });
+
+			services.AddFirstServices();
+            services.AddSecondServices(Configuration);
+
+			services.AddScoped<IFirstClient, LocalFirstClient>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

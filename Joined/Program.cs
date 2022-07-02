@@ -24,14 +24,14 @@ namespace Joined
 			Host.CreateDefaultBuilder(args)
 				.ConfigureServices((context, services) =>
 				{
-					var configuration = context.Configuration;
-					services.ConfigureDaemonBackgroundServices(
-						configuration,
-						DaemonNames,
-						args);
+					//var configuration = context.Configuration;
+					//services.ConfigureDaemonBackgroundServices(
+					//	configuration,
+					//	DaemonNames,
+					//	args);
 
-                    services.AddHostedService<DaemonBackgroundService<First.Program>>();
-					services.AddHostedService<DaemonBackgroundService<Second.Program>>();
+                    //services.AddHostedService<DaemonBackgroundService<First.Program>>();
+					//services.AddHostedService<DaemonBackgroundService<Second.Program>>();
 				})
 				.ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
 	}
